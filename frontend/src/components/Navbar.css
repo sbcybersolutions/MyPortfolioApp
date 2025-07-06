@@ -1,16 +1,19 @@
+/* frontend/src/components/Navbar.css */
+
 .navbar {
   background-color: #333;
-  padding: 15px 20px;
+  padding: 15px 20px; /* Reduced padding slightly if it was too large */
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  position: fixed; /* Fix navbar to the top */
+  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000; /* Ensure it stays on top */
+  z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; /* Add this to ensure padding doesn't increase total width */
 }
 
 .navbar-brand a {
@@ -18,6 +21,7 @@
   text-decoration: none;
   font-size: 1.5em;
   font-weight: bold;
+  white-space: nowrap; /* Prevent "My Portfolio" from wrapping */
 }
 
 .navbar-links {
@@ -25,10 +29,13 @@
   margin: 0;
   padding: 0;
   display: flex;
+  /* Consider adding flex-wrap if links might wrap on very small screens */
+  /* flex-wrap: wrap; */
 }
 
 .navbar-links li {
-  margin-left: 20px;
+  margin-left: 20px; /* Spacing between individual links */
+  white-space: nowrap; /* Prevent individual link text from wrapping */
 }
 
 .navbar-links a {
@@ -36,9 +43,32 @@
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
+  display: block; /* Ensures padding/margin work correctly on links */
+  padding: 5px 0; /* Add a little vertical padding for click area */
 }
 
 .navbar-links a:hover,
-.navbar-links a.active { /* You can add an 'active' class for current page */
-  color: #00bcd4; /* A lighter blue for hover/active */
+.navbar-links a.active {
+  color: #00bcd4;
+}
+
+/* --- Add a simple media query for smaller screens --- */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    padding: 10px 15px; /* Adjust padding for mobile */
+  }
+
+  .navbar-brand {
+    margin-bottom: 10px; /* Space between brand and stacked links */
+  }
+
+  .navbar-links {
+    width: 100%; /* Links take full width */
+    justify-content: space-around; /* Distribute links evenly */
+  }
+
+  .navbar-links li {
+    margin: 0 5px; /* Reduce horizontal margin for smaller screens */
+  }
 }

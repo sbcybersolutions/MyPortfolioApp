@@ -1,0 +1,86 @@
+/* frontend/src/pages/Projects.css */
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+  text-align: center;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 30px; /* Space between cards */
+  margin-top: 30px;
+}
+
+.project-card {
+  background-color: #333; /* Darker background for cards */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: left; /* Align text within card */
+  transition: transform 0.2s ease-in-out;
+  display: flex; /* Use flexbox for internal layout */
+  flex-direction: column;
+  justify-content: space-between; /* Push links to bottom */
+}
+
+.project-card:hover {
+  transform: translateY(-5px); /* Subtle lift effect on hover */
+}
+
+.project-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  color: #00bcd4; /* Highlight project titles */
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.6em;
+}
+
+.project-card p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex-grow: 1; /* Allows description to take up available space */
+}
+
+.project-tech {
+  font-style: italic;
+  font-size: 0.9em;
+  color: #aaa;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.project-links a {
+  display: inline-block; /* Make links behave like blocks for padding */
+  background-color: #00bcd4;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.project-links a:hover {
+  background-color: #008c9e;
+}
+
+.error-message {
+  color: #ff6347; /* Tomato red for error messages */
+  font-weight: bold;
+}
+
+/* Adjust padding for the overall container if navbar is fixed */
+body #root {
+  padding-top: 80px; /* Ensure content isn't hidden behind fixed navbar */
+}
