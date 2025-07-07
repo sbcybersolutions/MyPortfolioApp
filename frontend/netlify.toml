@@ -1,0 +1,9 @@
+# netlify.toml
+[build]
+  command = "npm run build" # Command to build your React app
+  publish = "dist"          # Directory where Vite outputs the build files
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
