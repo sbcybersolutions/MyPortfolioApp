@@ -8,38 +8,55 @@ import Projects from './pages/Projects';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
-
-// NEW AUTH IMPORTS
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
-// We'll add an AdminDashboard and AddProjectForm later
-// import AdminDashboard from './pages/admin/AdminDashboard';
-// import AddProjectForm from './pages/admin/AddProjectForm';
 
+// NEW IMPORT: AuthProvider
+import { AuthProvider } from './context/AuthContext';
+
+// Placeholder for admin pages (we'll create these soon)
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AddProjectForm from './pages/admin/AddProjectForm';
+
+// NEW IMPORT: ProtectedRoute
+import ProtectedRoute from './components/ProtectedRoute'; // We'll create this next
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+    <AuthProvider> {/* Wrap the entire application with AuthProvider */}
+      <Router>
+        <Navbar />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-          {/* NEW AUTH ROUTES */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-
-          {/* Protected Admin Routes will go here later */}
-          {/*
-          <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
-          <Route path="/admin/add-project" element={<ProtectedRoute><AddProjectForm /></ProtectedRoute>} />
-          */}
-        </Routes>
-      </div>
-    </Router>
+            {/* PROTECTED ADMIN ROUTES */}
+            {/* Apply ProtectedRoute to routes that require authentication */}
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/add-project"
+              element={
+                <ProtectedRoute>
+                  <AddProjectForm />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

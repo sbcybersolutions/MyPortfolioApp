@@ -81,3 +81,28 @@
     text-align: center;
   }
 }
+
+.nav-button {
+  background: none;
+  border: none;
+  color: white; /* Match link color */
+  font-size: 1em; /* Match link font size */
+  font-weight: 500; /* Match link font weight */
+  cursor: pointer;
+  padding: 0; /* Remove default button padding */
+  transition: color 0.3s ease;
+}
+
+.nav-button:hover {
+  color: var(--color-accent-blue); /* Match link hover color */
+}
+
+/* Adjust media queries if needed for button */
+@media (max-width: 768px) {
+  .navbar-links li .nav-button {
+    /* Ensure button takes full width when stacked */
+    width: 100%;
+    text-align: center;
+    padding: 5px 0; /* Match link padding */
+  }
+}

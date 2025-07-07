@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // For navigation and linking to register
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import '../auth/auth.css'; // Import shared auth styling
+import '../auth/auth.css';
+import { useAuth } from '../../context/AuthContext'; // NEW: Import useAuth hook
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // Hook to programmatically navigate
+  const navigate = useNavigate();
+  const { login } = useAuth(); // NEW: Get the login function from context
 
-  // Define your backend API URL from environment variables
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-    setError('');      // Clear previous errors
-    setLoading(true);  // Set loading state
+    e.preventDefault();
+    setError('');
+    setLoading(true);
 
     try {
       const response = await axios.post(`${API_URL}/api/auth/login`, {
@@ -24,31 +25,27 @@ function Login() {
         password,
       });
 
-      // Assuming your backend sends the token in response.data.token
       const { token, _id, username: loggedInUsername } = response.data;
 
-      // Store token and user info in localStorage (or sessionStorage for less persistence)
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('user', JSON.stringify({ _id, username: loggedInUsername }));
+      login({ _id, username: loggedInUsername }, token); // Use the context login function
 
-      // Redirect to an admin dashboard or home page after successful login
-      navigate('/admin'); // We'll create this admin route soon!
-      // Optionally, refresh page to re-render components that check auth status
-      window.location.reload();
-
+      navigate('/admin'); // Redirect to admin dashboard
+      // No need for window.location.reload() if context updates properly
+      // window.location.reload(); // Can remove this line now
     } catch (err) {
       console.error('Login error:', err);
       if (err.response && err.response.data && err.response.data.message) {
-        setError(err.response.data.message); // Display error message from backend
+        setError(err.response.data.message);
       } else {
         setError('An unexpected error occurred. Please try again.');
       }
     } finally {
-      setLoading(false); // Stop loading regardless of success or failure
+      setLoading(false);
     }
   };
 
   return (
+    // ... rest of Login component (no changes needed below this)
     <div className="auth-container">
       <div className="auth-card">
         <h1>Login</h1>

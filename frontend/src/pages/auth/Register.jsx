@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import '../auth/auth.css'; // Import shared auth styling
+import '../auth/auth.css';
+// Removed: import { useAuth } from '../../context/AuthContext'; // No need to import for Register
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -32,8 +33,8 @@ function Register() {
         password,
       });
 
-      setSuccess('Registration successful! You can now log in.');
-      // Optionally, auto-login or redirect to login page after successful registration
+      setSuccess('Registration successful! Redirecting to login...');
+      // Redirect to login page after successful registration
       setTimeout(() => {
         navigate('/login');
       }, 2000); // Redirect after 2 seconds
@@ -51,6 +52,7 @@ function Register() {
   };
 
   return (
+    // ... rest of Register component (no changes needed below this)
     <div className="auth-container">
       <div className="auth-card">
         <h1>Register</h1>
