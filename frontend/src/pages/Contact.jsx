@@ -81,7 +81,7 @@ function Contact() {
           <h3>LinkedIn</h3>
           <p>
             <a href="https://linkedin.com/in/christiansalafia" target="_blank" rel="noopener noreferrer">
-              linkedin.com/in/christiansalafia
+              I'm on LinkedIn
             </a>
           </p>
         </div>
@@ -89,7 +89,7 @@ function Contact() {
           <h3>GitHub</h3>
           <p>
             <a href="https://github.com/sbcybersolutions" target="_blank" rel="noopener noreferrer">
-              github.com/sbcybersolutions
+              I'm on GitHub
             </a>
           </p>
         </div>
