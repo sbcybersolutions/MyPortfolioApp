@@ -1,0 +1,5 @@
+# Global ignores (can be redundant if ignored in subfolders)
+# For example, if both backend/ and frontend/ have node_modules/,
+# ignoring it at the root will cover both.
+node_modules/
+.env
