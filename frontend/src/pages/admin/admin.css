@@ -1,0 +1,126 @@
+/* frontend/src/pages/admin/admin.css */
+
+.admin-dashboard-container,
+.add-project-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.admin-dashboard-container h1,
+.add-project-container h1 {
+    color: var(--color-yellow); /* Yellow for main admin headings */
+    font-size: 2.8em;
+    margin-bottom: 30px;
+}
+
+.admin-dashboard-container p {
+    color: #D0D0D0;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.admin-dashboard-container .btn-primary {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #1A2A47; /* Card background */
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 0; /* Override default margin if set elsewhere */
+}
+
+.form-group label {
+    display: block;
+    color: #E0E0E0;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-accent-blue);
+    border-radius: 5px;
+    background-color: #0C1D40; /* Darker background for inputs */
+    color: #E0E0E0;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 0 3px rgba(242, 194, 48, 0.3); /* Yellow glow on focus */
+}
+
+.add-project-container .btn-primary {
+    width: auto; /* Allow button to size to content */
+    align-self: flex-start; /* Align button to the left */
+    padding: 12px 25px;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+/* Success and Error messages */
+.success-message {
+  color: var(--color-accent-blue);
+  background-color: rgba(10, 137, 166, 0.1);
+  border: 1px solid var(--color-accent-blue);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.error-message {
+  color: var(--color-orange);
+  background-color: rgba(242, 101, 19, 0.1);
+  border: 1px solid var(--color-orange);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-dashboard-container h1,
+  .add-project-container h1 {
+    font-size: 2.2em;
+  }
+  .project-form {
+      padding: 20px;
+      margin: 20px auto;
+  }
+  .add-project-container .btn-primary {
+      width: 100%;
+      align-self: center;
+  }
+}

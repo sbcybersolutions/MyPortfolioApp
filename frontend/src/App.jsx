@@ -10,20 +10,18 @@ import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
-
-// NEW IMPORT: AuthProvider
 import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
-// Placeholder for admin pages (we'll create these soon)
+// Admin Components
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AddProjectForm from './pages/admin/AddProjectForm';
+import EditProjectForm from './pages/admin/EditProjectForm'; // NEW IMPORT
 
-// NEW IMPORT: ProtectedRoute
-import ProtectedRoute from './components/ProtectedRoute'; // We'll create this next
 
 function App() {
   return (
-    <AuthProvider> {/* Wrap the entire application with AuthProvider */}
+    <AuthProvider>
       <Router>
         <Navbar />
         <div className="container">
@@ -36,7 +34,6 @@ function App() {
             <Route path="/register" element={<Register />} />
 
             {/* PROTECTED ADMIN ROUTES */}
-            {/* Apply ProtectedRoute to routes that require authentication */}
             <Route
               path="/admin"
               element={
@@ -50,6 +47,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AddProjectForm />
+                </ProtectedRoute>
+              }
+            />
+            <Route // NEW ROUTE FOR EDITING
+              path="/admin/edit-project/:id"
+              element={
+                <ProtectedRoute>
+                  <EditProjectForm />
                 </ProtectedRoute>
               }
             />

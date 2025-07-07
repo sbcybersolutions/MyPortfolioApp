@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Assuming you might link to other admin pages
 import { useAuth } from '../../context/AuthContext'; // To display logged-in user
+import './admin.css'; // Importing admin-specific styles
 
 function AdminDashboard() {
   const { user } = useAuth(); // Get user details from context
 
   return (
-    <div className="admin-dashboard-container" style={{ textAlign: 'center', padding: '40px' }}>
-      <h1 style={{ color: 'var(--color-yellow)' }}>Admin Dashboard</h1>
-      {user && <p style={{ color: 'var(--color-accent-blue)' }}>Welcome, {user.username}!</p>}
-      <p style={{ color: '#D0D0D0', marginTop: '20px' }}>
+    <div className="admin-dashboard-container">
+      <h1>Admin Dashboard</h1>
+      {user && <p>Welcome, {user.username}!</p>}
+      <p>
         This is your private admin area. Here you can manage your portfolio content.
       </p>
       <div style={{ marginTop: '30px' }}>

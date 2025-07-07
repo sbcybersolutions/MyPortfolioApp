@@ -122,3 +122,70 @@
         text-align: center;
     }
 }
+
+.admin-project-actions {
+  display: flex;
+  gap: 10px; /* Space between edit and delete buttons */
+  margin-top: 15px; /* Space between project links and admin actions */
+  flex-wrap: wrap;
+}
+
+.btn-edit {
+  background-color: var(--color-accent-blue); /* Teal/Cyan for Edit */
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none; /* Remove default button border */
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  background-color: #086d82; /* Darker teal/cyan on hover */
+  transform: translateY(-2px);
+}
+
+.btn-delete {
+  background-color: var(--color-orange); /* Orange for Delete */
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #d85200; /* Darker orange on hover */
+  transform: translateY(-2px);
+}
+
+/* Ensure success/error messages also have their styles applied in Projects.css */
+/* (You might already have these from admin.css, but ensure they are here or imported) */
+.success-message {
+  color: var(--color-accent-blue);
+  background-color: rgba(10, 137, 166, 0.1);
+  border: 1px solid var(--color-accent-blue);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.error-message {
+  color: var(--color-orange);
+  background-color: rgba(242, 101, 19, 0.1);
+  border: 1px solid var(--color-orange);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 0.95em;
+}
