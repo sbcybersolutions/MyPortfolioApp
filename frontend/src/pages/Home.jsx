@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'; // Import axios for fetching skills
-import '../assets/profile-image.jpg';
+import profileImage from '../assets/profile-image.jpg';
 import './Home.css';
 
 function Home() {
@@ -44,7 +44,7 @@ function Home() {
     <div className="home-container">
       <section className="hero-section">
         <div className="hero-content">
-          <h1>Hi, I'm **[Your Name]**</h1>
+          <h1>Hi, I'm Christian</h1>
           <h2>A Full-Stack Developer</h2>
           <p>
             Building robust web applications from frontend to backend.
@@ -57,7 +57,7 @@ function Home() {
           </div>
         </div>
         <div className="hero-image">
-          <img src="/src/assets/profile-image.jpg" alt="Your Profile" />
+          <img src={profileImage} alt="Your Profile" /> {/* <-- Change src to use the imported variable */}
         </div>
       </section>
 
