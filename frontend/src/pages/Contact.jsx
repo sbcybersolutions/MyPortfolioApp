@@ -74,22 +74,22 @@ function Contact() {
         <div className="contact-info-card">
           <h3>Email</h3>
           <p>
-            <a href="mailto:your.email@example.com">your.email@example.com</a>
+            <a href="mailto:christian@sbcyber.net">christian@sbcyber.net</a>
           </p>
         </div>
         <div className="contact-info-card">
           <h3>LinkedIn</h3>
           <p>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
-              linkedin.com/in/yourprofile
+            <a href="https://linkedin.com/in/christiansalafia" target="_blank" rel="noopener noreferrer">
+              linkedin.com/in/christiansalafia
             </a>
           </p>
         </div>
         <div className="contact-info-card">
           <h3>GitHub</h3>
           <p>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-              github.com/yourusername
+            <a href="https://github.com/sbcybersolutions" target="_blank" rel="noopener noreferrer">
+              github.com/sbcybersolutions
             </a>
           </p>
         </div>
