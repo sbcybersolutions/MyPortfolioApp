@@ -1,32 +1,34 @@
 /* frontend/src/components/Navbar.css */
 
 .navbar {
-  background-color: var(--color-dark-blue); /* Use dark blue for navbar background */
+  background-color: var(--color-deep-black); /* Deep black for navbar background */
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #E0E0E0; /* Light gray for general text in navbar */
+  color: var(--color-light-gray); /* Light gray for general text in navbar */
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Stronger shadow for depth */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
 }
 
 .navbar-brand a {
-  color: var(--color-primary-blue); /* Primary blue for brand name */
+  color: var(--color-gold); /* Gold for brand name */
   text-decoration: none;
-  font-size: 1.7em; /* Slightly larger brand text */
+  font-size: 1.7em;
   font-weight: bold;
   white-space: nowrap;
   transition: color 0.3s ease;
+  font-family: var(--font-heading); /* Apply heading font */
+  letter-spacing: 0.08em;
 }
 
 .navbar-brand a:hover {
-    color: var(--color-yellow); /* Yellow on hover */
+    color: var(--color-light-gray); /* Light gray on hover */
 }
 
 .navbar-links {
@@ -37,12 +39,12 @@
 }
 
 .navbar-links li {
-  margin-left: 25px; /* Increased spacing between links */
+  margin-left: 25px;
   white-space: nowrap;
 }
 
 .navbar-links a {
-  color: #E0E0E0; /* Light gray for links */
+  color: var(--color-light-gray); /* Light gray for links */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -51,58 +53,53 @@
 }
 
 .navbar-links a:hover,
-.navbar-links a.active { /* You can add an 'active' class for current page */
-  color: var(--color-accent-blue); /* Accent blue for hover/active */
+.navbar-links a.active {
+  color: var(--color-gold); /* Gold for hover/active */
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: var(--color-light-gray); /* Match link color */
+  font-size: 1em; /* Match link font size */
+  font-weight: 500; /* Match link font weight */
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.nav-button:hover {
+  color: var(--color-gold); /* Match link hover color */
 }
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    padding: 15px; /* Adjust padding for mobile */
-    align-items: flex-start; /* Align items to the start when stacked */
+    padding: 15px;
+    align-items: flex-start;
   }
 
   .navbar-brand {
-    margin-bottom: 15px; /* More space below brand when stacked */
-    width: 100%; /* Brand takes full width */
-    text-align: center; /* Center brand text */
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
   }
 
   .navbar-links {
     width: 100%;
-    flex-direction: column; /* Stack links vertically */
-    align-items: center; /* Center individual links */
+    flex-direction: column;
+    align-items: center;
   }
 
   .navbar-links li {
-    margin: 8px 0; /* Vertical margin for stacked links */
+    margin: 8px 0;
     width: 100%;
     text-align: center;
   }
-}
-
-.nav-button {
-  background: none;
-  border: none;
-  color: white; /* Match link color */
-  font-size: 1em; /* Match link font size */
-  font-weight: 500; /* Match link font weight */
-  cursor: pointer;
-  padding: 0; /* Remove default button padding */
-  transition: color 0.3s ease;
-}
-
-.nav-button:hover {
-  color: var(--color-accent-blue); /* Match link hover color */
-}
-
-/* Adjust media queries if needed for button */
-@media (max-width: 768px) {
   .navbar-links li .nav-button {
-    /* Ensure button takes full width when stacked */
     width: 100%;
     text-align: center;
-    padding: 5px 0; /* Match link padding */
+    padding: 5px 0;
   }
 }

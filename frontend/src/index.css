@@ -1,20 +1,24 @@
 /* frontend/src/index.css */
 
 :root {
-  /* Color Theme Variables */
-  --color-primary-blue: #0644BF;
-  --color-dark-blue: #0C1D40;
-  --color-accent-blue: #0A89A6;
-  --color-yellow: #F2C230;
-  --color-orange: #F26513;
+  /* Color Theme Variables (Victor Zurbaran) */
+  --color-dark-red: #8C0327;
+  --color-gold: #F2B544;
+  --color-deep-black: #260101;
+  --color-light-gray: #F2F2F2;
+  --color-medium-gray: #BFBFBF;
 
-  /* General text and background based on your dark theme */
-  color-scheme: dark; /* Indicate that the page works well in dark mode */
-  color: #E0E0E0; /* Light gray for general text */
-  background-color: var(--color-dark-blue); /* Your dark blue as primary background */
+  /* Font Variables */
+  --font-body: 'Montserrat', sans-serif;
+  --font-heading: 'Oswald', sans-serif;
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.6; /* Slightly increased line height for readability */
+  /* General text and background based on your new light theme */
+  color-scheme: light; /* Indicate that the page works well in light mode */
+  color: var(--color-deep-black); /* Deep black for main text on light background */
+  background-color: var(--color-light-gray); /* Light gray for primary background */
+
+  font-family: var(--font-body);
+  line-height: 1.6;
   font-weight: 400;
 
   font-synthesis: none;
@@ -25,40 +29,96 @@
 
 body {
   margin: 0;
-  display: flex; /* Use flex to center root div */
+  display: flex;
   min-width: 320px;
-  min-height: 100vh; /* Full viewport height */
-  background-color: var(--color-dark-blue); /* Ensure body background matches root */
-  color: var(--text-color); /* Use general text color */
+  min-height: 100vh;
+  background-color: var(--color-light-gray); /* Ensure body background matches root */
+  color: var(--color-deep-black);
 }
 
-/* Target the #root element where React renders */
 #root {
-  max-width: 1400px; /* Increased max-width for larger screens */
-  width: 100%; /* Ensure it takes full width up to max */
-  margin: 0 auto; /* Center the entire app horizontally */
-  padding: 0; /* Remove default padding here, components will add their own */
-  text-align: center; /* Center content horizontally by default */
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
 }
 
-/* Global Typography Reset/Defaults */
+/* Global Typography Defaults */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--color-primary-blue); /* Headers can use primary blue */
+    font-family: var(--font-heading);
+    color: var(--color-dark-red); /* Dark red for headers */
     margin-top: 1.5rem;
     margin-bottom: 1rem;
     line-height: 1.2;
+    letter-spacing: 0.05em; /* A little letter spacing for headings */
 }
 
 p {
     margin-bottom: 1rem;
+    font-family: var(--font-body);
+    color: var(--color-deep-black); /* Deep black for paragraphs */
 }
 
 a {
-    color: var(--color-accent-blue); /* Default link color */
+    color: var(--color-dark-red); /* Default link color: dark red */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: var(--color-yellow); /* Hover color for links */
+    color: var(--color-gold); /* Hover color for links: gold */
+}
+
+/* General button styling adjustments if needed for the new palette */
+.btn {
+    background-color: var(--color-dark-red);
+    color: var(--color-light-gray); /* Light gray text on dark red button */
+    border: 2px solid var(--color-dark-red);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--color-dark-red);
+    transform: translateY(-3px);
+}
+
+.btn-primary { /* Same as .btn for this palette */
+    background-color: var(--color-dark-red);
+    color: var(--color-light-gray);
+    border: 2px solid var(--color-dark-red);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-dark-red);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-dark-red);
+    border: 2px solid var(--color-dark-red);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-dark-red);
+    color: var(--color-light-gray);
+}
+
+.success-message {
+    color: var(--color-dark-red); /* Match palette */
+    background-color: rgba(140, 3, 39, 0.1);
+    border-color: var(--color-dark-red);
+}
+
+.error-message {
+    color: var(--color-gold); /* Use gold for error highlight */
+    background-color: rgba(242, 181, 68, 0.1);
+    border-color: var(--color-gold);
+}
+
+/* Ensure content isn't hidden by fixed navbar */
+body #root {
+  padding-top: 80px; /* Adjust as per your navbar height */
 }

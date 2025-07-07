@@ -8,7 +8,7 @@
 }
 
 .contact-container h1 {
-    color: var(--color-primary-blue);
+    color: var(--color-dark-red);
     font-size: 3em;
     margin-bottom: 40px;
 }
@@ -16,7 +16,7 @@
 .contact-intro {
     font-size: 1.1em;
     line-height: 1.8;
-    color: #D0D0D0;
+    color: var(--color-deep-black);
     margin-bottom: 40px;
 }
 
@@ -28,10 +28,11 @@
 }
 
 .contact-info-card {
-  background-color: #1A2A47;
+  background-color: var(--color-light-gray);
   padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-medium-gray);
   transition: transform 0.2s ease;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .contact-info-card h3 {
-  color: var(--color-yellow);
+  color: var(--color-dark-red); /* Dark red for contact categories */
   font-size: 1.6em;
   margin-top: 0;
   margin-bottom: 15px;
@@ -51,7 +52,7 @@
 }
 
 .contact-info-card a {
-  color: var(--color-accent-blue);
+  color: var(--color-gold); /* Gold for contact links */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -59,11 +60,11 @@
 }
 
 .contact-info-card a:hover {
-  color: var(--color-orange);
+  color: var(--color-dark-red);
 }
 
 .contact-form-section h2 {
-  color: var(--color-primary-blue);
+  color: var(--color-dark-red);
   font-size: 2.2em;
   margin-top: 50px;
   margin-bottom: 30px;
@@ -72,108 +73,27 @@
 .contact-form-section p {
     font-size: 1.1em;
     line-height: 1.8;
-    color: #D0D0D0;
+    color: var(--color-deep-black);
     margin-bottom: 30px;
 }
 
-.placeholder-form {
+.contact-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 60px auto;
     padding: 30px;
-    background-color: #1A2A47;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.placeholder-form input[type="text"],
-.placeholder-form input[type="email"],
-.placeholder-form textarea {
-    padding: 12px 15px;
-    border: 1px solid var(--color-accent-blue);
-    border-radius: 5px;
-    background-color: #0C1D40; /* Darker background for inputs */
-    color: #E0E0E0;
-    font-size: 1em;
-    width: 100%; /* Ensure inputs take full width of form */
-    box-sizing: border-box; /* Include padding in width */
-}
-
-.placeholder-form input::placeholder,
-.placeholder-form textarea::placeholder {
-    color: #aaa;
-}
-
-.placeholder-form input:focus,
-.placeholder-form textarea:focus {
-    outline: none;
-    border-color: var(--color-yellow);
-    box-shadow: 0 0 0 3px rgba(242, 194, 48, 0.3); /* Yellow glow on focus */
-}
-
-.placeholder-form textarea {
-    resize: vertical; /* Allow vertical resizing */
-}
-
-/* Re-use .btn and .btn-primary from Home.css */
-.placeholder-form .btn-primary {
-    margin-top: 10px;
-    width: auto; /* Allow button to size to content */
-    align-self: flex-start; /* Align button to the left */
-}
-
-/* Responsive adjustments for Contact page */
-@media (max-width: 768px) {
-  .contact-container h1 {
-    font-size: 2.5em;
-  }
-  .contact-info-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .contact-form-section h2 {
-    font-size: 1.8em;
-  }
-  .placeholder-form {
-      padding: 20px;
-  }
-  .placeholder-form .btn-primary {
-      width: 100%; /* Button takes full width on mobile */
-      align-self: center; /* Center button */
-  }
-}
-
-.contact-form-section h2 {
-  color: var(--color-primary-blue); /* Primary blue for sub-heading */
-  font-size: 2.2em;
-  margin-top: 50px;
-  margin-bottom: 30px;
-}
-
-.contact-form { /* Replaced .placeholder-form with .contact-form */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 600px;
-    margin: 0 auto 60px auto; /* Margin at bottom for spacing */
-    padding: 30px;
-    background-color: #1A2A47; /* Card background */
+    background-color: var(--color-light-gray);
     border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-medium-gray);
     text-align: left;
 }
 
-/* Re-using form-group, input, textarea styles from admin.css or global styles is good.
-   If they are not applied globally via index.css or App.css, you might need to
-   duplicate some of these input/label styles here, or ideally, move them
-   to a common CSS file if many forms share them.
-   For now, assuming basic form-group styles are global or you'll add them here. */
-
 .form-group label {
     display: block;
-    color: #E0E0E0;
+    color: var(--color-deep-black);
     margin-bottom: 8px;
     font-weight: 500;
     font-size: 1.05em;
@@ -185,10 +105,10 @@
 .form-group textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid var(--color-accent-blue);
+    border: 1px solid var(--color-medium-gray);
     border-radius: 5px;
-    background-color: #0C1D40; /* Darker background for inputs */
-    color: #E0E0E0;
+    background-color: var(--color-light-gray); /* Match background */
+    color: var(--color-deep-black);
     font-size: 1em;
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -196,52 +116,22 @@
 
 .form-group textarea {
     resize: vertical;
-    min-height: 120px; /* Slightly taller textarea */
+    min-height: 120px;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--color-yellow);
-    box-shadow: 0 0 0 3px rgba(242, 194, 48, 0.3);
+    border-color: var(--color-dark-red); /* Dark red on focus */
+    box-shadow: 0 0 0 3px rgba(140, 3, 39, 0.3);
 }
 
-.contact-form .btn-primary {
-    width: 100%; /* Full width button */
-    padding: 15px;
-    font-size: 1.2em;
-    margin-top: 10px;
-}
+/* .btn-primary global styles apply here */
 
-/* Ensure success/error message styles are present or included */
-.success-message {
-    color: var(--color-accent-blue);
-    background-color: rgba(10, 137, 166, 0.1);
-    border: 1px solid var(--color-accent-blue);
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-size: 0.95em;
-}
+/* Success and Error messages - will use global definitions from index.css */
 
-.error-message {
-    color: var(--color-orange);
-    background-color: rgba(242, 101, 19, 0.1);
-    border: 1px solid var(--color-orange);
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-size: 0.95em;
-}
-
-/* Responsive adjustments for Contact page */
+/* Responsive adjustments remain the same */
 @media (max-width: 768px) {
-  .contact-form {
-      padding: 20px;
-  }
-  .contact-form .btn-primary {
-      width: 100%; /* Button takes full width on mobile */
-  }
+  .contact-form { padding: 20px; }
+  .contact-form .btn-primary { width: 100%; }
 }

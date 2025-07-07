@@ -8,7 +8,7 @@
 }
 
 .projects-container h1 {
-    color: var(--color-primary-blue); /* Primary blue for main heading */
+    color: var(--color-dark-red); /* Dark red for main heading */
     margin-bottom: 40px;
     font-size: 2.8em;
 }
@@ -21,40 +21,41 @@
 }
 
 .project-card {
-  background-color: #1A2A47; /* A slightly lighter dark blue for card background */
-  border-radius: 10px; /* Slightly more rounded corners */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow */
-  padding: 25px; /* Increased padding */
+  background-color: var(--color-light-gray); /* Light gray for card background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+  border: 1px solid var(--color-medium-gray); /* Subtle border */
+  padding: 25px;
   text-align: left;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden; /* Ensures image corners respect border-radius */
+  overflow: hidden;
 }
 
 .project-card:hover {
-  transform: translateY(-8px); /* More pronounced lift */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .project-image {
   max-width: 100%;
-  height: 200px; /* Fixed height for images, adjust as needed */
-  object-fit: cover; /* Crop images to fit while maintaining aspect ratio */
-  border-radius: 8px; /* Rounded image corners */
-  margin-bottom: 20px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
 .project-card h3 {
-  color: var(--color-yellow); /* Yellow for project titles */
+  color: var(--color-dark-red); /* Dark red for project titles */
   margin-top: 0;
   margin-bottom: 12px;
   font-size: 1.8em;
 }
 
 .project-card p {
-  color: #D0D0D0; /* Lighter text for descriptions */
+  color: var(--color-deep-black); /* Deep black for descriptions */
   line-height: 1.7;
   margin-bottom: 18px;
   flex-grow: 1;
@@ -64,128 +65,104 @@
 .project-tech {
   font-style: italic;
   font-size: 0.95em;
-  color: var(--color-accent-blue); /* Accent blue for technologies */
+  color: var(--color-medium-gray); /* Medium gray for technologies */
   margin-top: 15px;
   margin-bottom: 20px;
 }
 
 .project-links {
-    margin-top: auto; /* Push links to the bottom if content above varies */
+    margin-top: auto;
     display: flex;
-    gap: 10px; /* Space between link buttons */
-    justify-content: flex-start; /* Align links to the left */
-    flex-wrap: wrap; /* Allow links to wrap on smaller screens */
+    gap: 10px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .project-links a {
-  background-color: var(--color-primary-blue); /* Primary blue for link buttons */
-  color: white;
-  padding: 10px 18px; /* Larger padding for buttons */
+  background-color: var(--color-dark-red); /* Dark red for link buttons */
+  color: var(--color-light-gray);
+  padding: 10px 18px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
   font-size: 0.9em;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
 }
 
 .project-links a:hover {
-  background-color: var(--color-orange); /* Orange on hover */
-  transform: translateY(-2px); /* Slight lift on hover */
+  background-color: var(--color-gold); /* Gold on hover */
+  color: var(--color-deep-black); /* Dark text on gold */
+  transform: translateY(-2px);
 }
 
-.error-message {
-  color: var(--color-orange); /* Orange for error messages */
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-/* Responsive adjustments for project grid */
-@media (max-width: 768px) {
-  .projects-container h1 {
-    font-size: 2.2em; /* Smaller heading on mobile */
-  }
-  .projects-grid {
-    grid-template-columns: 1fr; /* Single column on small screens */
-    gap: 25px;
-  }
-  .project-card {
-    padding: 20px;
-  }
-  .project-image {
-    height: 180px; /* Adjust image height for mobile */
-  }
-}
-
-@media (max-width: 480px) {
-    .project-links a {
-        flex: 1 1 auto; /* Links fill available space and wrap */
-        text-align: center;
-    }
-}
-
+/* Admin-only buttons */
 .admin-project-actions {
   display: flex;
-  gap: 10px; /* Space between edit and delete buttons */
-  margin-top: 15px; /* Space between project links and admin actions */
+  gap: 10px;
+  margin-top: 15px;
   flex-wrap: wrap;
 }
 
 .btn-edit {
-  background-color: var(--color-accent-blue); /* Teal/Cyan for Edit */
-  color: white;
+  background-color: var(--color-medium-gray); /* Medium gray for Edit */
+  color: var(--color-deep-black);
   padding: 8px 15px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   font-size: 0.9em;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  border: none; /* Remove default button border */
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  border: none;
   cursor: pointer;
 }
 
 .btn-edit:hover {
-  background-color: #086d82; /* Darker teal/cyan on hover */
+  background-color: var(--color-dark-red); /* Dark red on hover */
+  color: var(--color-light-gray);
   transform: translateY(-2px);
 }
 
 .btn-delete {
-  background-color: var(--color-orange); /* Orange for Delete */
-  color: white;
+  background-color: var(--color-dark-red); /* Dark red for Delete */
+  color: var(--color-light-gray);
   padding: 8px 15px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   font-size: 0.9em;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
   border: none;
   cursor: pointer;
 }
 
 .btn-delete:hover {
-  background-color: #d85200; /* Darker orange on hover */
+  background-color: var(--color-gold); /* Gold on hover */
+  color: var(--color-deep-black);
   transform: translateY(-2px);
 }
 
-/* Ensure success/error messages also have their styles applied in Projects.css */
-/* (You might already have these from admin.css, but ensure they are here or imported) */
+/* Success and Error messages - adjust for new palette, also check index.css global overrides */
+/* If defined in index.css, these might be overridden. Ensure correct precedence. */
+/* For safety, you can add !important if needed, but better to structure CSS correctly */
 .success-message {
-  color: var(--color-accent-blue);
-  background-color: rgba(10, 137, 166, 0.1);
-  border: 1px solid var(--color-accent-blue);
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 0.95em;
+  color: var(--color-dark-red);
+  background-color: rgba(140, 3, 39, 0.1);
+  border: 1px solid var(--color-dark-red);
 }
 
 .error-message {
-  color: var(--color-orange);
-  background-color: rgba(242, 101, 19, 0.1);
-  border: 1px solid var(--color-orange);
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 0.95em;
+  color: var(--color-gold);
+  background-color: rgba(242, 181, 68, 0.1);
+  border: 1px solid var(--color-gold);
+}
+
+/* Responsive adjustments remain the same */
+@media (max-width: 768px) {
+  .projects-container h1 { font-size: 2.2em; }
+  .projects-grid { grid-template-columns: 1fr; gap: 25px; }
+  .project-card { padding: 20px; }
+  .project-image { height: 180px; }
+}
+@media (max-width: 480px) {
+    .project-links a { flex: 1 1 auto; text-align: center; }
 }
