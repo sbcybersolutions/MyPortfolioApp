@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router(); // Create an Express router
 const Project = require('../models/Project'); // Import our Project model
+const { protect } = require('../middleware/authMiddleware'); // Import authentication middleware
 
 // Route 1: GET all projects
 // GET /api/projects
@@ -34,11 +35,12 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Route 3: POST a new project
+// Route 3: POST a new project (PROTECTED)
 // POST /api/projects
-router.post('/', async (req, res) => {
+router.post('/', protect, async (req, res) => { // <-- Added 'protect' here
   try {
-    // Create a new Project instance using data from the request body
+    // You can access the authenticated user's ID via req.user._id if needed
+    // For now, we're just ensuring *any* authenticated user can add projects.
     const newProject = new Project({
       title: req.body.title,
       description: req.body.description,
@@ -48,11 +50,10 @@ router.post('/', async (req, res) => {
       imageUrl: req.body.imageUrl,
     });
 
-    const project = await newProject.save(); // Save the new project to the database
-    res.status(201).json(project); // Send back the created project with a 201 status (Created)
+    const project = await newProject.save();
+    res.status(201).json(project);
   } catch (err) {
     console.error('Error creating project:', err);
-    // Mongoose validation errors (e.g., missing required fields)
     if (err.name === 'ValidationError') {
         return res.status(400).json({ message: err.message });
     }
@@ -60,23 +61,22 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Route 4: PUT (Update) an existing project
+// Route 4: PUT (Update) an existing project (PROTECTED)
 // PUT /api/projects/:id
-router.put('/:id', async (req, res) => {
+router.put('/:id', protect, async (req, res) => { // <-- Added 'protect' here
   try {
     const { title, description, technologies, demoLink, githubLink, imageUrl } = req.body;
 
-    // Find the project by ID and update it. `new: true` returns the updated document.
     const project = await Project.findByIdAndUpdate(
       req.params.id,
       { title, description, technologies, demoLink, githubLink, imageUrl },
-      { new: true, runValidators: true } // `runValidators: true` ensures schema validators run on update
+      { new: true, runValidators: true }
     );
 
     if (!project) {
       return res.status(404).json({ message: 'Project not found' });
     }
-    res.json(project); // Send back the updated project
+    res.json(project);
   } catch (err) {
     console.error('Error updating project:', err);
     if (err.kind === 'ObjectId') {
@@ -89,16 +89,16 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Route 5: DELETE a project
+// Route 5: DELETE a project (PROTECTED)
 // DELETE /api/projects/:id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', protect, async (req, res) => { // <-- Added 'protect' here
   try {
-    const project = await Project.findByIdAndDelete(req.params.id); // Find and delete a project
+    const project = await Project.findByIdAndDelete(req.params.id);
 
     if (!project) {
       return res.status(404).json({ message: 'Project not found' });
     }
-    res.json({ message: 'Project removed' }); // Send a success message
+    res.json({ message: 'Project removed' });
   } catch (err) {
     console.error('Error deleting project:', err);
     if (err.kind === 'ObjectId') {
