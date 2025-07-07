@@ -8,7 +8,7 @@ function About() {
       <h1>About Me</h1>
       <section className="about-introduction">
         <p>
-          Hello! I'm **[Your Name]**, a passionate Full-Stack Developer with a knack for
+          Hello! I'm Christian, a passionate Full-Stack Developer with a knack for
           creating efficient, scalable, and user-friendly web applications. My journey
           into the world of coding began with a fascination for how technology solves
           real-world problems, and it has since evolved into a dedicated career in web development.
