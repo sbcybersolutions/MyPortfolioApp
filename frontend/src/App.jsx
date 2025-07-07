@@ -16,7 +16,11 @@ import ProtectedRoute from './components/ProtectedRoute';
 // Admin Components
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AddProjectForm from './pages/admin/AddProjectForm';
-import EditProjectForm from './pages/admin/EditProjectForm'; // NEW IMPORT
+import EditProjectForm from './pages/admin/EditProjectForm';
+import MessagesList from './pages/admin/MessagesList';
+import SkillsManagement from './pages/admin/SkillsManagement'; // NEW IMPORT
+import AddSkillForm from './pages/admin/AddSkillForm';       // NEW IMPORT
+import EditSkillForm from './pages/admin/EditSkillForm';     // NEW IMPORT
 
 
 function App() {
@@ -50,11 +54,35 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route // NEW ROUTE FOR EDITING
+            <Route
               path="/admin/edit-project/:id"
               element={
                 <ProtectedRoute>
                   <EditProjectForm />
+                </ProtectedRoute>
+              }
+            />
+            <Route // NEW ROUTE FOR SKILLS MANAGEMENT
+              path="/admin/skills"
+              element={
+                <ProtectedRoute>
+                  <SkillsManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route // NEW ROUTE FOR ADD SKILL
+              path="/admin/add-skill"
+              element={
+                <ProtectedRoute>
+                  <AddSkillForm />
+                </ProtectedRoute>
+              }
+            />
+            <Route // NEW ROUTE FOR EDIT SKILL
+              path="/admin/edit-skill/:id"
+              element={
+                <ProtectedRoute>
+                  <EditSkillForm />
                 </ProtectedRoute>
               }
             />

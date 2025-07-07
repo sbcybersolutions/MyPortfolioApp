@@ -26,6 +26,9 @@ app.use('/api/auth', authRoutes); // All requests to /api/auth will be handled b
 // Use message routes
 app.use('/api/messages', messageRoutes); // All requests to /api/messages will be handled by messageRoutes
 
+// Use skill routes
+app.use('/api/skills', require('./routes/skillRoutes')); // Import and use skill routes
+
 
 // MongoDB Connection
 const mongoURI = process.env.MONGO_URI;
@@ -39,6 +42,7 @@ mongoose.connect(mongoURI)
       console.log('Project API routes available at: http://localhost:5000/api/projects');
       console.log('Auth API routes available at: http://localhost:5000/api/auth'); // New line
       console.log('Message API routes available at: http://localhost:5000/api/messages'); // New line
+      console.log('Skill API routes available at: http://localhost:5000/api/skills'); // New line
     });
   })
   .catch(err => {

@@ -163,3 +163,84 @@
   .messages-list { grid-template-columns: 1fr; gap: 20px; }
   .message-card { padding: 20px; }
 }
+
+.skills-management-list {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.skill-category-group {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-medium-gray); /* Divider between categories */
+}
+
+.skill-category-group:last-child {
+  border-bottom: none; /* No border for the last category */
+}
+
+.skill-category-group h2 {
+  font-size: 2em;
+  color: var(--color-dark-red); /* Dark red for category titles */
+  margin-bottom: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.skill-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Grid for individual skills */
+  gap: 15px;
+}
+
+.skill-management-card {
+  background-color: var(--color-light-gray);
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-medium-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow content to wrap */
+  gap: 10px; /* Space between skill name and buttons */
+}
+
+.skill-management-card span {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: var(--color-deep-black);
+  flex-grow: 1; /* Allow skill name to take space */
+  text-align: left;
+}
+
+.skill-actions {
+  display: flex;
+  gap: 8px; /* Space between edit/delete buttons */
+  flex-shrink: 0; /* Prevent actions from shrinking */
+}
+
+.skill-actions .btn {
+  padding: 6px 12px; /* Smaller padding for these buttons */
+  font-size: 0.85em;
+}
+
+/* Responsive adjustments for skills management */
+@media (max-width: 768px) {
+  .skill-cards-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+  .skill-management-card {
+    flex-direction: column; /* Stack name and actions */
+    align-items: center;
+    padding: 20px;
+  }
+  .skill-management-card span {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .skill-actions {
+    width: 100%; /* Buttons take full width */
+    justify-content: center;
+  }
+}
