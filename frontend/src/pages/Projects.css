@@ -2,85 +2,123 @@
 
 .projects-container {
   max-width: 1200px;
-  margin: 0 auto; /* Center the container */
+  margin: 0 auto;
   padding: 20px;
   text-align: center;
 }
 
+.projects-container h1 {
+    color: var(--color-primary-blue); /* Primary blue for main heading */
+    margin-bottom: 40px;
+    font-size: 2.8em;
+}
+
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-  gap: 30px; /* Space between cards */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   margin-top: 30px;
 }
 
 .project-card {
-  background-color: #333; /* Darker background for cards */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  text-align: left; /* Align text within card */
-  transition: transform 0.2s ease-in-out;
-  display: flex; /* Use flexbox for internal layout */
+  background-color: #1A2A47; /* A slightly lighter dark blue for card background */
+  border-radius: 10px; /* Slightly more rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+  padding: 25px; /* Increased padding */
+  text-align: left;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Push links to bottom */
+  justify-content: space-between;
+  overflow: hidden; /* Ensures image corners respect border-radius */
 }
 
 .project-card:hover {
-  transform: translateY(-5px); /* Subtle lift effect on hover */
+  transform: translateY(-8px); /* More pronounced lift */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
 .project-image {
   max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 15px;
+  height: 200px; /* Fixed height for images, adjust as needed */
+  object-fit: cover; /* Crop images to fit while maintaining aspect ratio */
+  border-radius: 8px; /* Rounded image corners */
+  margin-bottom: 20px;
 }
 
 .project-card h3 {
-  color: #00bcd4; /* Highlight project titles */
+  color: var(--color-yellow); /* Yellow for project titles */
   margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.6em;
+  margin-bottom: 12px;
+  font-size: 1.8em;
 }
 
 .project-card p {
-  color: #ccc;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  flex-grow: 1; /* Allows description to take up available space */
+  color: #D0D0D0; /* Lighter text for descriptions */
+  line-height: 1.7;
+  margin-bottom: 18px;
+  flex-grow: 1;
+  font-size: 1em;
 }
 
 .project-tech {
   font-style: italic;
-  font-size: 0.9em;
-  color: #aaa;
-  margin-top: 10px;
-  margin-bottom: 15px;
+  font-size: 0.95em;
+  color: var(--color-accent-blue); /* Accent blue for technologies */
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.project-links {
+    margin-top: auto; /* Push links to the bottom if content above varies */
+    display: flex;
+    gap: 10px; /* Space between link buttons */
+    justify-content: flex-start; /* Align links to the left */
+    flex-wrap: wrap; /* Allow links to wrap on smaller screens */
 }
 
 .project-links a {
-  display: inline-block; /* Make links behave like blocks for padding */
-  background-color: #00bcd4;
+  background-color: var(--color-primary-blue); /* Primary blue for link buttons */
   color: white;
-  padding: 8px 15px;
-  border-radius: 5px;
+  padding: 10px 18px; /* Larger padding for buttons */
+  border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  margin-right: 10px;
-  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .project-links a:hover {
-  background-color: #008c9e;
+  background-color: var(--color-orange); /* Orange on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
 }
 
 .error-message {
-  color: #ff6347; /* Tomato red for error messages */
+  color: var(--color-orange); /* Orange for error messages */
   font-weight: bold;
+  font-size: 1.2em;
 }
 
-/* Adjust padding for the overall container if navbar is fixed */
-body #root {
-  padding-top: 80px; /* Ensure content isn't hidden behind fixed navbar */
+/* Responsive adjustments for project grid */
+@media (max-width: 768px) {
+  .projects-container h1 {
+    font-size: 2.2em; /* Smaller heading on mobile */
+  }
+  .projects-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+    gap: 25px;
+  }
+  .project-card {
+    padding: 20px;
+  }
+  .project-image {
+    height: 180px; /* Adjust image height for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+    .project-links a {
+        flex: 1 1 auto; /* Links fill available space and wrap */
+        text-align: center;
+    }
 }

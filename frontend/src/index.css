@@ -1,10 +1,21 @@
+/* frontend/src/index.css */
+
 :root {
+  /* Color Theme Variables */
+  --color-primary-blue: #0644BF;
+  --color-dark-blue: #0C1D40;
+  --color-accent-blue: #0A89A6;
+  --color-yellow: #F2C230;
+  --color-orange: #F26513;
+
+  /* General text and background based on your dark theme */
+  color-scheme: dark; /* Indicate that the page works well in dark mode */
+  color: #E0E0E0; /* Light gray for general text */
+  background-color: var(--color-dark-blue); /* Your dark blue as primary background */
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.6; /* Slightly increased line height for readability */
   font-weight: 400;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424; /* A dark background */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,16 +25,40 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  display: flex; /* Use flex to center root div */
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100vh; /* Full viewport height */
+  background-color: var(--color-dark-blue); /* Ensure body background matches root */
+  color: var(--text-color); /* Use general text color */
 }
 
-/* Basic container styling */
+/* Target the #root element where React renders */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: 1400px; /* Increased max-width for larger screens */
+  width: 100%; /* Ensure it takes full width up to max */
+  margin: 0 auto; /* Center the entire app horizontally */
+  padding: 0; /* Remove default padding here, components will add their own */
+  text-align: center; /* Center content horizontally by default */
+}
+
+/* Global Typography Reset/Defaults */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary-blue); /* Headers can use primary blue */
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--color-accent-blue); /* Default link color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-yellow); /* Hover color for links */
 }

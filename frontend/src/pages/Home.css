@@ -1,0 +1,222 @@
+/* frontend/src/pages/Home.css */
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: row; /* Default to row layout */
+  align-items: center;
+  justify-content: center;
+  gap: 50px; /* Space between text and image */
+  padding: 60px 0;
+  min-height: calc(100vh - 150px); /* Adjust based on navbar height and desired spacing */
+  text-align: left; /* Align text within its content block */
+}
+
+.hero-content {
+  flex: 1; /* Allows content to take available space */
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3.5em;
+  margin-bottom: 0.2em;
+  color: var(--color-yellow); /* Yellow for your name */
+}
+
+.hero-content h2 {
+  font-size: 2.2em;
+  color: var(--color-primary-blue); /* Primary blue for role */
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
+
+.hero-content p {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: #E0E0E0; /* Light gray text */
+  margin-bottom: 1.5em;
+}
+
+.hero-image {
+  flex: 1; /* Allows image to take available space */
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%; /* Circular image */
+  object-fit: cover;
+  border: 5px solid var(--color-primary-blue); /* Border around image */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px; /* Space between buttons */
+  margin-top: 30px;
+  justify-content: flex-start; /* Align buttons to the left */
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  display: inline-block; /* Essential for padding/margin */
+}
+
+.btn-primary {
+  background-color: var(--color-primary-blue);
+  color: white;
+  border: 2px solid var(--color-primary-blue);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary-blue);
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary-blue);
+  border: 2px solid var(--color-primary-blue);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary-blue);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.section-divider {
+    padding: 60px 0 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 40px;
+}
+
+.section-divider h3 {
+    font-size: 2.5em;
+    color: var(--color-accent-blue); /* Accent blue for divider heading */
+}
+
+.skills-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding-bottom: 60px;
+}
+
+.skill-item {
+  background-color: #1A2A47; /* Slightly lighter dark blue for skill items */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center; /* Center text within skill items */
+  transition: transform 0.2s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+}
+
+.skill-item h4 {
+  color: var(--color-yellow); /* Yellow for skill category titles */
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.skill-item p {
+  color: #D0D0D0; /* Light gray for skill description */
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments for Home page */
+@media (max-width: 992px) {
+  .hero-content h1 {
+    font-size: 3em;
+  }
+  .hero-content h2 {
+    font-size: 1.8em;
+  }
+  .hero-content p {
+    font-size: 1em;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column-reverse; /* Image above text on small screens */
+    text-align: center; /* Center text when stacked */
+    padding: 40px 0;
+  }
+
+  .hero-content, .hero-image {
+    max-width: 100%; /* Take full width */
+  }
+
+  .hero-image {
+    margin-bottom: 30px; /* Space between image and text */
+  }
+
+  .hero-image img {
+    width: 80%; /* Adjust image size for mobile */
+  }
+
+  .hero-buttons {
+    justify-content: center; /* Center buttons when stacked */
+    flex-direction: column; /* Stack buttons too */
+    align-items: center;
+    gap: 15px; /* Adjust gap */
+  }
+
+  .btn {
+      width: 80%; /* Buttons take more width */
+  }
+
+  .section-divider {
+      padding: 40px 0 20px 0;
+  }
+  .section-divider h3 {
+      font-size: 2em;
+  }
+
+  .skills-summary {
+    grid-template-columns: 1fr; /* Single column for skills */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content h2 {
+        font-size: 1.5em;
+    }
+    .hero-buttons {
+        gap: 10px;
+    }
+    .btn {
+        width: 90%;
+        font-size: 0.9em;
+        padding: 10px 15px;
+    }
+}

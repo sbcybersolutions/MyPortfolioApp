@@ -1,27 +1,32 @@
 /* frontend/src/components/Navbar.css */
 
 .navbar {
-  background-color: #333;
-  padding: 15px 20px; /* Reduced padding slightly if it was too large */
+  background-color: var(--color-dark-blue); /* Use dark blue for navbar background */
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: #E0E0E0; /* Light gray for general text in navbar */
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box; /* Add this to ensure padding doesn't increase total width */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Stronger shadow for depth */
+  box-sizing: border-box;
 }
 
 .navbar-brand a {
-  color: white;
+  color: var(--color-primary-blue); /* Primary blue for brand name */
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1.7em; /* Slightly larger brand text */
   font-weight: bold;
-  white-space: nowrap; /* Prevent "My Portfolio" from wrapping */
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand a:hover {
+    color: var(--color-yellow); /* Yellow on hover */
 }
 
 .navbar-links {
@@ -29,46 +34,50 @@
   margin: 0;
   padding: 0;
   display: flex;
-  /* Consider adding flex-wrap if links might wrap on very small screens */
-  /* flex-wrap: wrap; */
 }
 
 .navbar-links li {
-  margin-left: 20px; /* Spacing between individual links */
-  white-space: nowrap; /* Prevent individual link text from wrapping */
+  margin-left: 25px; /* Increased spacing between links */
+  white-space: nowrap;
 }
 
 .navbar-links a {
-  color: white;
+  color: #E0E0E0; /* Light gray for links */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
-  display: block; /* Ensures padding/margin work correctly on links */
-  padding: 5px 0; /* Add a little vertical padding for click area */
+  display: block;
+  padding: 5px 0;
 }
 
 .navbar-links a:hover,
-.navbar-links a.active {
-  color: #00bcd4;
+.navbar-links a.active { /* You can add an 'active' class for current page */
+  color: var(--color-accent-blue); /* Accent blue for hover/active */
 }
 
-/* --- Add a simple media query for smaller screens --- */
+/* Media query for smaller screens */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column; /* Stack items vertically on smaller screens */
-    padding: 10px 15px; /* Adjust padding for mobile */
+    flex-direction: column;
+    padding: 15px; /* Adjust padding for mobile */
+    align-items: flex-start; /* Align items to the start when stacked */
   }
 
   .navbar-brand {
-    margin-bottom: 10px; /* Space between brand and stacked links */
+    margin-bottom: 15px; /* More space below brand when stacked */
+    width: 100%; /* Brand takes full width */
+    text-align: center; /* Center brand text */
   }
 
   .navbar-links {
-    width: 100%; /* Links take full width */
-    justify-content: space-around; /* Distribute links evenly */
+    width: 100%;
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center individual links */
   }
 
   .navbar-links li {
-    margin: 0 5px; /* Reduce horizontal margin for smaller screens */
+    margin: 8px 0; /* Vertical margin for stacked links */
+    width: 100%;
+    text-align: center;
   }
 }

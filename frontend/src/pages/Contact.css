@@ -1,0 +1,146 @@
+/* frontend/src/pages/Contact.css */
+
+.contact-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-container h1 {
+    color: var(--color-primary-blue);
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+
+.contact-intro {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #D0D0D0;
+    margin-bottom: 40px;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.contact-info-card {
+  background-color: #1A2A47;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-info-card h3 {
+  color: var(--color-yellow);
+  font-size: 1.6em;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.contact-info-card p {
+  margin: 0;
+}
+
+.contact-info-card a {
+  color: var(--color-accent-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 1.05em;
+}
+
+.contact-info-card a:hover {
+  color: var(--color-orange);
+}
+
+.contact-form-section h2 {
+  color: var(--color-primary-blue);
+  font-size: 2.2em;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.contact-form-section p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #D0D0D0;
+    margin-bottom: 30px;
+}
+
+.placeholder-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #1A2A47;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.placeholder-form input[type="text"],
+.placeholder-form input[type="email"],
+.placeholder-form textarea {
+    padding: 12px 15px;
+    border: 1px solid var(--color-accent-blue);
+    border-radius: 5px;
+    background-color: #0C1D40; /* Darker background for inputs */
+    color: #E0E0E0;
+    font-size: 1em;
+    width: 100%; /* Ensure inputs take full width of form */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.placeholder-form input::placeholder,
+.placeholder-form textarea::placeholder {
+    color: #aaa;
+}
+
+.placeholder-form input:focus,
+.placeholder-form textarea:focus {
+    outline: none;
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 0 3px rgba(242, 194, 48, 0.3); /* Yellow glow on focus */
+}
+
+.placeholder-form textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Re-use .btn and .btn-primary from Home.css */
+.placeholder-form .btn-primary {
+    margin-top: 10px;
+    width: auto; /* Allow button to size to content */
+    align-self: flex-start; /* Align button to the left */
+}
+
+/* Responsive adjustments for Contact page */
+@media (max-width: 768px) {
+  .contact-container h1 {
+    font-size: 2.5em;
+  }
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .contact-form-section h2 {
+    font-size: 1.8em;
+  }
+  .placeholder-form {
+      padding: 20px;
+  }
+  .placeholder-form .btn-primary {
+      width: 100%; /* Button takes full width on mobile */
+      align-self: center; /* Center button */
+  }
+}

@@ -1,0 +1,110 @@
+/* frontend/src/pages/About.css */
+
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.about-container h1 {
+    color: var(--color-primary-blue);
+    font-size: 3em;
+    margin-bottom: 40px;
+}
+
+.about-container h2 {
+    color: var(--color-yellow); /* Yellow for sub-headings */
+    font-size: 2.2em;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.about-introduction p,
+.about-journey p,
+.about-cta p {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: #D0D0D0;
+  margin-bottom: 1.5em;
+}
+
+.about-introduction {
+    margin-bottom: 40px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  text-align: left; /* Align text left within skill cards */
+}
+
+.skill-card {
+  background-color: #1A2A47;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skill-card h3 {
+  color: var(--color-accent-blue); /* Accent blue for skill categories */
+  font-size: 1.6em;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.skill-card ul {
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.skill-card li {
+  color: #E0E0E0;
+  margin-bottom: 8px;
+  position: relative; /* For custom bullet point */
+  padding-left: 20px; /* Space for custom bullet */
+}
+
+.skill-card li::before {
+  content: '►'; /* Custom bullet point */
+  color: var(--color-yellow); /* Yellow bullet */
+  position: absolute;
+  left: 0;
+  font-size: 0.8em;
+  top: 5px; /* Adjust vertical alignment */
+}
+
+.about-cta {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Re-use .btn and .btn-primary from Home.css if desired, or duplicate for specific styling */
+.about-cta .btn {
+    /* This will use the global .btn styles from index.css or App.css */
+    margin-top: 20px;
+}
+
+/* Responsive adjustments for About page */
+@media (max-width: 768px) {
+  .about-container h1 {
+    font-size: 2.5em;
+  }
+  .about-container h2 {
+    font-size: 1.8em;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 20px;
+  }
+}

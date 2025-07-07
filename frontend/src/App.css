@@ -1,5 +1,18 @@
+/* frontend/src/App.css */
+
 .container {
-  padding: 20px;
-  margin-top: 60px; /* Adjust based on navbar height */
-  /* You can add max-width, margin: auto for centering here later */
+  padding: 30px 20px; /* Adjust padding for pages */
+  margin-top: 70px; /* Ensure content is below fixed navbar */
+  max-width: 1200px; /* Keep content within a readable width */
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box; /* Include padding in element's total width/height */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px; /* Less padding on smaller screens */
+    margin-top: 100px; /* Adjust if navbar becomes taller when stacked */
+  }
 }
