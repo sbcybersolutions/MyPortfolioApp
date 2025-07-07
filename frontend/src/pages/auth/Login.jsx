@@ -25,13 +25,14 @@ function Login() {
         password,
       });
 
-      const { token, _id, username: loggedInUsername } = response.data;
+      // Destructure all relevant user info from response.data, including 'role'
+      const { token, _id, username: loggedInUsername, role } = response.data; // <-- ADDED role
 
-      login({ _id, username: loggedInUsername }, token); // Use the context login function
+      // Pass the complete user object (with role) to the context login function
+      login({ _id, username: loggedInUsername, role }, token); // <-- UPDATED
 
-      navigate('/admin'); // Redirect to admin dashboard
-      // No need for window.location.reload() if context updates properly
-      // window.location.reload(); // Can remove this line now
+      navigate('/admin');
+      // window.location.reload(); // Can remove this if context updates properly
     } catch (err) {
       console.error('Login error:', err);
       if (err.response && err.response.data && err.response.data.message) {

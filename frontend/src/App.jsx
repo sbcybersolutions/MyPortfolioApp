@@ -18,9 +18,9 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AddProjectForm from './pages/admin/AddProjectForm';
 import EditProjectForm from './pages/admin/EditProjectForm';
 import MessagesList from './pages/admin/MessagesList';
-import SkillsManagement from './pages/admin/SkillsManagement'; // NEW IMPORT
-import AddSkillForm from './pages/admin/AddSkillForm';       // NEW IMPORT
-import EditSkillForm from './pages/admin/EditSkillForm';     // NEW IMPORT
+import SkillsManagement from './pages/admin/SkillsManagement';
+import AddSkillForm from './pages/admin/AddSkillForm';
+import EditSkillForm from './pages/admin/EditSkillForm';
 
 
 function App() {
@@ -37,11 +37,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
-            {/* PROTECTED ADMIN ROUTES */}
+            {/* PROTECTED ADMIN ROUTES - NOW WITH ROLE CHECK */}
             <Route
               path="/admin"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute requiredRole="admin"> {/* <-- ADDED requiredRole */}
                   <AdminDashboard />
                 </ProtectedRoute>
               }
@@ -49,7 +49,7 @@ function App() {
             <Route
               path="/admin/add-project"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute requiredRole="admin"> {/* <-- ADDED requiredRole */}
                   <AddProjectForm />
                 </ProtectedRoute>
               }
@@ -57,32 +57,40 @@ function App() {
             <Route
               path="/admin/edit-project/:id"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute requiredRole="admin"> {/* <-- ADDED requiredRole */}
                   <EditProjectForm />
                 </ProtectedRoute>
               }
             />
-            <Route // NEW ROUTE FOR SKILLS MANAGEMENT
+            <Route
               path="/admin/skills"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute requiredRole="admin"> {/* <-- ADDED requiredRole */}
                   <SkillsManagement />
                 </ProtectedRoute>
               }
             />
-            <Route // NEW ROUTE FOR ADD SKILL
+            <Route
               path="/admin/add-skill"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute requiredRole="admin"> {/* <-- ADDED requiredRole */}
                   <AddSkillForm />
                 </ProtectedRoute>
               }
             />
-            <Route // NEW ROUTE FOR EDIT SKILL
+            <Route
               path="/admin/edit-skill/:id"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute requiredRole="admin"> {/* <-- ADDED requiredRole */}
                   <EditSkillForm />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/messages"
+              element={
+                <ProtectedRoute requiredRole="admin"> {/* <-- ADDED requiredRole */}
+                  <MessagesList />
                 </ProtectedRoute>
               }
             />

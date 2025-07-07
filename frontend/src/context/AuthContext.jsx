@@ -1,11 +1,8 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
-// Create the Auth Context
 const AuthContext = createContext(null);
 
-// Create the Auth Provider component
 export const AuthProvider = ({ children }) => {
-  // Initialize state from localStorage on first load
   const [user, setUser] = useState(() => {
     try {
       const storedUser = localStorage.getItem('user');
@@ -17,7 +14,6 @@ export const AuthProvider = ({ children }) => {
   });
   const [authToken, setAuthToken] = useState(() => localStorage.getItem('authToken') || null);
 
-  // Effect to update localStorage whenever user or authToken changes
   useEffect(() => {
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
@@ -31,25 +27,22 @@ export const AuthProvider = ({ children }) => {
     }
   }, [user, authToken]);
 
-  // Login function: updates state and localStorage
+  // Login function: now accepts userData which should include role
   const login = (userData, token) => {
-    setUser(userData);
+    setUser(userData); // userData should now contain _id, username, and role
     setAuthToken(token);
-    // Note: localStorage is updated via useEffect
   };
 
-  // Logout function: clears state and localStorage
   const logout = () => {
     setUser(null);
     setAuthToken(null);
-    // Note: localStorage is updated via useEffect
   };
 
-  // Value provided to consumers of this context
   const authContextValue = {
     user,
     authToken,
-    isAuthenticated: !!user && !!authToken, // Check if both user data and token exist
+    isAuthenticated: !!user && !!authToken,
+    isAdmin: user?.role === 'admin', // NEW: Check if the user is an admin
     login,
     logout,
   };
@@ -61,7 +54,6 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Custom hook to easily consume the AuthContext
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {

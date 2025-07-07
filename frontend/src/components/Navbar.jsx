@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import { useAuth } from '../context/AuthContext'; // NEW: Import useAuth hook
+import { useAuth } from '../context/AuthContext';
 
 function Navbar() {
-  const { isAuthenticated, logout, user } = useAuth(); // Get auth state and logout function
+  const { isAuthenticated, isAdmin, logout, user } = useAuth(); // <-- ADDED isAdmin
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout(); // Call the logout function from context
-    navigate('/login'); // Redirect to login page after logout
-    window.location.reload(); // Optional: A full reload can ensure all components update
+    logout();
+    navigate('/login');
+    window.location.reload();
   };
 
   return (
@@ -31,8 +31,8 @@ function Navbar() {
         <li>
           <Link to="/contact">Contact</Link>
         </li>
-        {isAuthenticated ? (
-          // If authenticated, show Admin Dashboard and Logout
+        {isAdmin ? ( // <-- Only show admin links if isAdmin is true
+          // If authenticated AND is Admin, show Admin Dashboard and Logout
           <>
             <li>
               <Link to="/admin">Admin</Link>
@@ -41,8 +41,14 @@ function Navbar() {
               <button onClick={handleLogout} className="nav-button">Logout ({user?.username})</button>
             </li>
           </>
-        ) : (
-          // If not authenticated, show Login and Register
+        ) : isAuthenticated ? ( // If authenticated but NOT admin (normal user)
+          <>
+            <li>
+              {/* You could add a 'My Profile' or similar link for regular users here */}
+              <button onClick={handleLogout} className="nav-button">Logout ({user?.username})</button>
+            </li>
+          </>
+        ) : ( // If not authenticated at all
           <>
             <li>
               <Link to="/login">Login</Link>

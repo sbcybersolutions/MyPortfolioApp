@@ -32,4 +32,14 @@ const protect = async (req, res, next) => {
   }
 };
 
-module.exports = { protect };
+// NEW MIDDLEWARE: Authorize roles
+const authorizeRoles = (...roles) => { // Accepts multiple roles (e.g., 'admin', 'editor')
+  return (req, res, next) => {
+    if (!req.user || !roles.includes(req.user.role)) { // Check if user exists and has required role
+      return res.status(403).json({ message: `Forbidden: User role '${req.user ? req.user.role : 'none'}' is not authorized to access this resource.` });
+    }
+    next();
+  };
+};
+
+module.exports = { protect, authorizeRoles };

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Message = require('../models/Message');
-const { protect } = require('../middleware/authMiddleware'); // Import protect for admin features
+const { protect, authorizeRoles } = require('../middleware/authMiddleware'); // Import protect for admin features
 
 // Route 1: POST a new contact message (Public route - no protection)
 // POST /api/messages
@@ -32,11 +32,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Route 2: GET all contact messages (PROTECTED - for admin dashboard)
+// Route 2: GET all contact messages (PROTECTED & ADMIN-ONLY)
 // GET /api/messages
-router.get('/', protect, async (req, res) => { // <-- Protected route
+router.get('/', protect, authorizeRoles('admin'), async (req, res) => { // <-- Added authorizeRoles('admin')
   try {
-    const messages = await Message.find({}).sort({ createdAt: -1 }); // Sort by newest first
+    const messages = await Message.find({}).sort({ createdAt: -1 });
     res.json(messages);
   } catch (err) {
     console.error('Error fetching messages:', err);
@@ -44,19 +44,12 @@ router.get('/', protect, async (req, res) => { // <-- Protected route
   }
 });
 
-// Route 3: Mark a message as read (PROTECTED - for admin dashboard)
+// Route 3: Mark a message as read (PROTECTED & ADMIN-ONLY)
 // PUT /api/messages/:id/read
-router.put('/:id/read', protect, async (req, res) => {
+router.put('/:id/read', protect, authorizeRoles('admin'), async (req, res) => { // <-- Added authorizeRoles('admin')
   try {
-    const message = await Message.findByIdAndUpdate(
-      req.params.id,
-      { isRead: true },
-      { new: true } // Return the updated document
-    );
-
-    if (!message) {
-      return res.status(404).json({ message: 'Message not found' });
-    }
+    const message = await Message.findByIdAndUpdate(req.params.id, { isRead: true }, { new: true });
+    if (!message) { return res.status(404).json({ message: 'Message not found' }); }
     res.json({ message: 'Message marked as read', data: message });
   } catch (err) {
     console.error('Error marking message as read:', err);
@@ -64,15 +57,12 @@ router.put('/:id/read', protect, async (req, res) => {
   }
 });
 
-// Route 4: Delete a message (PROTECTED - for admin dashboard)
+// Route 4: Delete a message (PROTECTED & ADMIN-ONLY)
 // DELETE /api/messages/:id
-router.delete('/:id', protect, async (req, res) => {
+router.delete('/:id', protect, authorizeRoles('admin'), async (req, res) => { // <-- Added authorizeRoles('admin')
   try {
     const message = await Message.findByIdAndDelete(req.params.id);
-
-    if (!message) {
-      return res.status(404).json({ message: 'Message not found' });
-    }
+    if (!message) { return res.status(404).json({ message: 'Message not found' }); }
     res.json({ message: 'Message deleted' });
   } catch (err) {
     console.error('Error deleting message:', err);
