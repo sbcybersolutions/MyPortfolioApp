@@ -144,3 +144,104 @@
       align-self: center; /* Center button */
   }
 }
+
+.contact-form-section h2 {
+  color: var(--color-primary-blue); /* Primary blue for sub-heading */
+  font-size: 2.2em;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.contact-form { /* Replaced .placeholder-form with .contact-form */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto 60px auto; /* Margin at bottom for spacing */
+    padding: 30px;
+    background-color: #1A2A47; /* Card background */
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    text-align: left;
+}
+
+/* Re-using form-group, input, textarea styles from admin.css or global styles is good.
+   If they are not applied globally via index.css or App.css, you might need to
+   duplicate some of these input/label styles here, or ideally, move them
+   to a common CSS file if many forms share them.
+   For now, assuming basic form-group styles are global or you'll add them here. */
+
+.form-group label {
+    display: block;
+    color: #E0E0E0;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="url"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-accent-blue);
+    border-radius: 5px;
+    background-color: #0C1D40; /* Darker background for inputs */
+    color: #E0E0E0;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px; /* Slightly taller textarea */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 0 3px rgba(242, 194, 48, 0.3);
+}
+
+.contact-form .btn-primary {
+    width: 100%; /* Full width button */
+    padding: 15px;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Ensure success/error message styles are present or included */
+.success-message {
+    color: var(--color-accent-blue);
+    background-color: rgba(10, 137, 166, 0.1);
+    border: 1px solid var(--color-accent-blue);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+.error-message {
+    color: var(--color-orange);
+    background-color: rgba(242, 101, 19, 0.1);
+    border: 1px solid var(--color-orange);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+/* Responsive adjustments for Contact page */
+@media (max-width: 768px) {
+  .contact-form {
+      padding: 20px;
+  }
+  .contact-form .btn-primary {
+      width: 100%; /* Button takes full width on mobile */
+  }
+}
